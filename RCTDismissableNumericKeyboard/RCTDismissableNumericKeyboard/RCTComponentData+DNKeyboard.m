@@ -20,7 +20,7 @@
     if ([self shouldCloseButtonBeInjected:props forView:view]) {
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
         CGFloat height = 0;
-        if(width > 320) {
+        if(width > 375) {
             height = 42;
         } else {
             height = 35;
