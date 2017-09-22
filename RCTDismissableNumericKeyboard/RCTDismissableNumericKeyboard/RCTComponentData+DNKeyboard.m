@@ -18,8 +18,20 @@
     }
     
     if ([self shouldCloseButtonBeInjected:props forView:view]) {
-        UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 35.0f)];
+        CGFloat width = [UIScreen mainScreen].bounds.size.width;
+        CGFloat height = 0;
+        if(width > 320) {
+            height = 42;
+        } else {
+            height = 35;
+        }
+        UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, height)];
         toolbar.barStyle = UISearchBarStyleDefault;
+        
+        toolbar.backgroundColor = [UIColor colorWithRed:230.0f/255.0f
+                                                  green:230.0f/255.0f
+                                                   blue:230.0f/255.0f
+                                                  alpha:1.0f];
         
         NSString *returnKeyTypeName = [props objectForKey:@"returnKeyType"];
         
@@ -49,7 +61,10 @@
             
         UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:item target:view action:NSSelectorFromString(@"resignFirstResponder")];
         
-        barButtonItem.tintColor = [UIColor darkTextColor];
+        barButtonItem.tintColor = [UIColor colorWithRed:97.0f/255.0f
+                                                  green:97.0f/255.0f
+                                                   blue:97.0f/255.0f
+                                                  alpha:1.0f];
             
         [toolbar setItems:[NSArray arrayWithObjects:flexibleSpace, barButtonItem, nil]];
         ((UITextField *)view).inputAccessoryView = toolbar;
